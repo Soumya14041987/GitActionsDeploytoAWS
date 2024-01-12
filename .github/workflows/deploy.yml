@@ -8,7 +8,6 @@ env:
   AWS_REGION: us-east-1
   S3BUCKET: codedeploystack-webappdeploymentbucket-7zf0mhlevrzf
 
-
 jobs:
   build:
     name: Build and Package
@@ -33,6 +32,11 @@ jobs:
 
       - name: chmod
         run: chmod -R +x ./.github
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
 
       - name: Build and Package Maven
         id: package
